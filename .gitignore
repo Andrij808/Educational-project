@@ -10,6 +10,15 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/[UIFabrica]TrollNest_Free_v01/
+/AddressableAssetsData/
+/Chess Set/
+/Elizaveta Shirokova/
+/LowlyPoly/
+/Makaka Games/
+/Simple Icons/
+/StarterAssets/
+/SubstanceAssets/
 *.log
 
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
