@@ -3,12 +3,13 @@ using System.Collections;
 
 public class RaibowEffect : MonoBehaviour
 {
+    [SerializeField] private Renderer targetRenderer;
+
     public float speed = 1f;
-    private Material material;
+    
     void Start()
     {
-        material = GetComponent<Renderer>().material;
-        StartCoroutine(RainbowCycle());
+               StartCoroutine(RainbowCycle());
     }
     IEnumerator RainbowCycle()
     {
@@ -17,7 +18,7 @@ public class RaibowEffect : MonoBehaviour
         while (true)
         {
             Color rainbowColor = Color.HSVToRGB(hue, 1f, 1f);
-            material.color = rainbowColor;
+            targetRenderer.material.color = rainbowColor;
             hue += Time.deltaTime * speed;
             if (hue > 1f) hue -= 1f;
 
