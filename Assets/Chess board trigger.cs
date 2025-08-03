@@ -1,23 +1,27 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Cheassboardtrigger : MonoBehaviour
+public class ChessBoardTrigger : MonoBehaviour
 {
-    public GameObject cheassboard;
-    public float spawnDistance = 1.5f;
-    private bool HasSpawned = false;
+    private const string PlayerTag = "Player";
+
+    [SerializeField] private GameObject chessFigurePrefab;
+
+    [SerializeField] private float spawnDistance = 1.5f;
+
+    private bool hasSpawned = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (HasSpawned) return;
+        if (hasSpawned) return;
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(PlayerTag))
         {
             Vector3 spawnPos = other.transform.position + other.transform.forward * spawnDistance;
-            Quaternion spawnRot = Quaternion.identity;
+            Quaternion spawnRot = chessFigurePrefab.transform.rotation;
 
-            Instantiate(cheassboard, spawnPos, spawnRot);
-            Debug.Log("Cheassboard Triggered" + other.name);
-            HasSpawned = true;
+            Instantiate(chessFigurePrefab, spawnPos, spawnRot);
+            Debug.Log("Chess piece spawned in front of: {other.name}");
+            hasSpawned = true;
         }
        
     }
