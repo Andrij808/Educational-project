@@ -3,20 +3,16 @@ using Cinemachine;
 
 public class CameraTrigger1 : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    private const string PlayerTag = "Player";
+
+    [SerializeField] private CinemachineVirtualCamera thisCamera;
+    [SerializeField] private CamaraChanger cameraChanger;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(PlayerTag))
         {
-           ActivateThisCamera();
+            cameraChanger.ChangeTo(thisCamera);
         }
-    }
-    void ActivateThisCamera()
-    {
-        CinemachineVirtualCamera[] allCams = FindObjectsOfType<CinemachineVirtualCamera>();
-        foreach (var cam in allCams)
-        {
-            cam.Priority = (cam == virtualCamera) ? 10 : 0;
-        }
+        
     }
 }
